@@ -10,10 +10,10 @@ class ApplicationContextInfoTest {
     @Test
     @DisplayName("모든 빈 출력하기")
     void findAllBean() {
-        String[] beanDefinitionNames = ac.getBeanDefinitionNames();
-        for (String beanDefinitionName : beanDefinitionNames) {
+        String[] beanDefinitionNames = ac.getBeanDefinitionNames(); //빈 객체이름들을 가져옴
+        for (String beanDefinitionName : beanDefinitionNames) { //iter + tab
             Object bean = ac.getBean(beanDefinitionName);
-            System.out.println("name=" + beanDefinitionName + " \t\tobject=" + bean);
+            System.out.println("name=" + beanDefinitionName + " \t\tobject=" + bean); //soutv
         }
     }
     @Test
