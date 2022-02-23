@@ -6,22 +6,20 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 public class BeanLifeCycleTest {
     @Test
     void lifeCycleTest(){
         ConfigurableApplicationContext ac = new AnnotationConfigApplicationContext(LifeCycleConfig.class);
-        NetworkClient client = ac.getBean(NetworkClient.class);
+        NetworkClient3 client = ac.getBean(NetworkClient3.class);
         ac.close(); //스프링 컨테이너를 종료, ConfigurableApplicationContext 필요
     }
     @Configuration
     static class LifeCycleConfig {
-        @Bean(initMethod = "init", destroyMethod = "close") // 이렇게 지정
-        public NetworkClient networkClient() {
-            NetworkClient networkClient = new NetworkClient();
-            networkClient.setUrl("http://hello-spring.dev");
-            return networkClient;
+        @Bean
+        public NetworkClient3 networkClient3() {
+            NetworkClient3 networkClient3 = new NetworkClient3();
+            networkClient3.setUrl("http://hello-spring.dev");
+            return networkClient3;
         }
     }
 }
