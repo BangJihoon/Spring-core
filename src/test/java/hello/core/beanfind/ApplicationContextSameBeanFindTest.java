@@ -27,8 +27,8 @@ class ApplicationContextSameBeanFindTest {
     @Test
     @DisplayName("Bean이 2개 이상인 경우, 클래스타입만 넣어서 조회시 NoUniqueBeanDefinitionException 발생")
     void findBeanByTypeDuplicate() {
-        MemberRepository bean = ac.getBean(MemberRepository.class);
-        //assertThrows(NoUniqueBeanDefinitionException.class, () -> ac.getBean(MemberRepository.class));
+        //MemberRepository bean = ac.getBean(MemberRepository.class);
+        assertThrows(NoUniqueBeanDefinitionException.class, () -> ac.getBean(MemberRepository.class));
     }
     @Test
     @DisplayName("Bean이 2개 이상인 경우, 빈이름까지 지정해서 조회하자!")
