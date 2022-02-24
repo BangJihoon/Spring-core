@@ -28,4 +28,8 @@ public class NetworkClient {
         System.out.println("NetworkClient.close");
         disConnect();
     }
+
+
+
+
 }
