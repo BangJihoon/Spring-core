@@ -2,14 +2,13 @@ package hello.core.scope;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Scope;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.inject.Provider;
 
 public class PrototypeProviderTest {
     @Test
@@ -23,10 +22,31 @@ public class PrototypeProviderTest {
         Assertions.assertThat(count2).isEqualTo(1);
     }
     static class ClientBean {
+        /*
+        @Autowired
+        private ApplicationContext ac; // 컨테이너 의존성 연결 = 의존관계 조회 DL (위험)
+        public int logic() {
+            // 로직호출시, 프로토타입 빈을 신규로 생성
+            PrototypeBean prototypeBean = ac.getBean(PrototypeBean.class);
+            prototypeBean.addCount();
+            int count = prototypeBean.getCount();
+            return count;
+        }
+        */
+        /*
         @Autowired
         private ObjectProvider<PrototypeBean> prototypeBeanProvider;
         public int logic() {
             PrototypeBean prototypeBean = prototypeBeanProvider.getObject();
+            prototypeBean.addCount();
+            int count = prototypeBean.getCount();
+            return count;
+        }
+        */
+        @Autowired
+        private Provider<PrototypeBean> provider;
+        public int logic() {
+            PrototypeBean prototypeBean = provider.get();
             prototypeBean.addCount();
             int count = prototypeBean.getCount();
             return count;
