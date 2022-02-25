@@ -22,6 +22,10 @@ repositories {
 }
 
 dependencies {
+	// 프로바이더 사용을 위한 Gradle 추가
+	implementation 'javax.inject:javax.inject:1'
+	// 웹 스코프 사용을 위한 Gradle 추가
+	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
