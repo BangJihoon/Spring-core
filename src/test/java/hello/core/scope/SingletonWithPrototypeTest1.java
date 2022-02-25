@@ -18,7 +18,7 @@ public class SingletonWithPrototypeTest1 {
         int count2 = clientBean2.logic();
         assertThat(count2).isEqualTo(2);
     }
-    // 싱글톤 빈에서 프로토타입 빈을 생성해주면?
+    // 싱글톤 빈에서 프로토타입 빈을 생성해주면, 정상 동작
     static class ClientBean {
         private final PrototypeBean prototypeBean;
         @Autowired
