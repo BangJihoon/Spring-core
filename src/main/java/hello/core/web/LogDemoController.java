@@ -11,12 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 @RequiredArgsConstructor
 public class LogDemoController {
     private final LogDemoService logDemoService;
-    private final Provider<MyLogger> provider;
+    //private final Provider<MyLogger> provider;
+    private final MyLogger myLogger;
 
     @RequestMapping("log-demo")
     @ResponseBody
     public String logDemo(HttpServletRequest request) {
-        MyLogger myLogger = provider.get();
+        //MyLogger myLogger = provider.get();
+        System.out.println("myLogger = " + myLogger.getClass()); //프록시 객체사용 출력
         String requestURL = request.getRequestURL().toString();
         myLogger.setRequestURL(requestURL);
         myLogger.log("controller test");

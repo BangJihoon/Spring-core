@@ -8,10 +8,10 @@ import javax.inject.Provider;
 @Service
 @RequiredArgsConstructor
 public class LogDemoService {
-    private final Provider<MyLogger> provider;
-
+    //private final Provider<MyLogger> provider;
+    private final MyLogger myLogger;
     public void logic(String id) {
-        MyLogger myLogger = provider.get();
+        //MyLogger myLogger = provider.get();
         myLogger.log("service id = " + id);
     }
 }
