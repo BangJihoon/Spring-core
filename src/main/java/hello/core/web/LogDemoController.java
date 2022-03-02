@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 @RequiredArgsConstructor
 public class LogDemoController {
     private final LogDemoService logDemoService;
-    //private final Provider<MyLogger> provider;
     private final MyLogger myLogger;
+    //private final Provider<MyLogger> provider;
 
     @RequestMapping("log-demo")
     @ResponseBody
